@@ -12,4 +12,9 @@ navLinks.forEach(link => {
   });
 });
 
+const burgerBtn = document.getElementById("burger-btn");
+const nav = document.querySelector("nav");
 
+burgerBtn.addEventListener("click", () => {
+  nav.classList.toggle("open");
+})
