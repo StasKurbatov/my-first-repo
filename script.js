@@ -70,3 +70,52 @@ form.addEventListener("submit", (event) => {
     form.reset();
   }
 });
+
+const projects = [
+  { id: 1, title: "Передний вис", category: "static", description: "Удержание элемента 10 секунд." },
+  { id: 2, title: "Горизонт", category: "static", description: "Удержание горизонта и отжимания." },
+  { id: 3, title: "Флажок", category: "static", description: "Освоение техники элемента." },
+  { id: 4, title: "Подтягивания", category: "strength", description: "25 повторений за подход." },
+  { id: 5, title: "Отжимания на брусьях", category: "strength", description: "40 повторений за подход." }
+];
+
+function createCard(project) {
+  return `
+    <article class="project-card" data-category="${project.category}">
+      <h3>${project.title}</h3>
+      <p>${project.description}</p>
+    </article>
+  `;
+}
+
+function renderProjects(list) {
+  const container = document.getElementById("projects-grid");
+  container.innerHTML = list.map(createCard).join("");
+}
+
+renderProjects(projects);
+
+const filterButtons = document.querySelectorAll(".filters button");
+
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const filter = btn.dataset.filter;
+    const filtered = filter === "all"
+      ? projects
+      : projects.filter(p => p.category === filter);
+
+    renderProjects(filtered);
+  });
+});
+const searchInput = document.getElementById("search-input");
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.trim().toLowerCase();
+  const filtered = projects.filter(p =>
+    p.title.toLowerCase().includes(query)
+  );
+  renderProjects(filtered);
+});

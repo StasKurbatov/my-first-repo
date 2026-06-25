@@ -34,31 +34,22 @@
         <p> Сейчас работаю над улучшением техники и увеличением времени удержания элементов.</p>
 </div>
 
-<button id="toggle-btn">Показать больше</button>
+        <button id="toggle-btn">Показать больше</button>
     </section>
     
     <section id="projects">
     <h2>Мои достижения</h2>
 
-    <div class="projects-grid">
-
-        <article>
-            <h3>Статика</h3>
-            <p>
-                Научился удерживать передний вис 10 секунд.
-                Фиксировать горизонт и отжиматься в нем.
-            </p>
-        </article>
-
-        <article>
-            <h3>База</h3>
-            <p>
-                Подтягивания на турнике — 25 раз за подход.
-                Отжимания на брусьях — 40 раз за подход.
-            </p>
-        </article>
+    <div class="filters">
+        <button data-filter="all" class="active">Все</button>
+        <button data-filter="strength">База</button>
+        <button data-filter="static">Статика</button>
     </div>
-</section>
+
+    <input type="text" id="search-input" placeholder="Поиск достижения...">
+
+    <div class="projects-grid" id="projects-grid"></div>
+    </section>
 
     <section id="contact">
         <h2>Связаться со мной</h2>
